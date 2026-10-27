@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DevHub: tools, snippets and a roadmap for developers</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=IBM+Plex+Sans:wght@400;500&family=JetBrains+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<aside>
+  <h1>DevHub</h1>
+  <nav id="nav">
+    <button data-view="tools" class="on">Dev tools</button>
+    <button data-view="snippets">Snippet vault</button>
+    <button data-view="roadmap">Roadmap</button>
+  </nav>
+  <div id="account"></div>
+</aside>
+
+<main>
+  <section id="tools">
+    <h2>Dev tools</h2>
+    <p class="sub">Everything runs in your browser. Nothing is sent to a server.</p>
+    <div id="tool-tabs" class="tabs"></div>
+    <div class="io">
+      <label>Input<textarea id="t-in" spellcheck="false"></textarea></label>
+      <label>Output<textarea id="t-out" spellcheck="false" readonly></textarea></label>
+    </div>
+    <div id="t-actions" class="row"></div>
+    <p id="t-msg" class="msg" role="status"></p>
+  </section>
+
+  <section id="snippets" hidden>
+    <h2>Snippet vault</h2>
+    <div id="snip-gate"></div>
+    <div id="snip-app" hidden>
+      <form id="snip-form" class="card">
+        <div class="row">
+          <input name="title" placeholder="Title, e.g. Debounce function" required maxlength="120">
+          <select name="lang"><option>javascript</option><option>python</option><option>sql</option><option>html</option><option>css</option><option>bash</option><option>text</option></select>
+          <input name="tags" placeholder="Tags, comma separated" maxlength="120">
+        </div>
+        <textarea name="code" rows="6" placeholder="Paste your code" required spellcheck="false"></textarea>
+        <button type="submit">Save snippet</button>
+      </form>
+      <input id="snip-search" type="search" placeholder="Search by title, tag or code">
+      <div id="snip-list"></div>
+    </div>
+  </section>
+
+  <section id="roadmap" hidden>
+    <h2>Full-stack roadmap</h2>
+    <p class="sub" id="road-sub"></p>
+    <div class="bar"><div id="bar-fill"></div></div>
+    <div id="road-list"></div>
+  </section>
+</main>
+
+<dialog id="auth">
+  <form id="auth-form">
+    <h3 id="auth-title">Log in</h3>
+    <label>Email<input name="email" type="email" required autocomplete="email"></label>
+    <label>Password<input name="password" type="password" required minlength="8" autocomplete="current-password"></label>
+    <p id="auth-msg" class="msg" role="alert"></p>
+    <div class="row">
+      <button type="submit" id="auth-go">Log in</button>
+      <button type="button" class="ghost" id="auth-switch">Create an account</button>
+      <button type="button" class="ghost" id="auth-close">Cancel</button>
+    </div>
+  </form>
+</dialog>
+<script src="app.js"></script>
+</body>
+</html>
